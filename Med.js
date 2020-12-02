@@ -1,4 +1,4 @@
-var list = [6, 7, 3, 2, 8, 8, 9, 8, 9, 8,10];
+var list = [6, 7, 3, 2, 8, 10, 9, 8, 9, 8,10];
 var tempList = [];
 var dayIgnoreList = [];
 
@@ -23,6 +23,18 @@ printList("list",list);
 
 removeDay(2);
 console.log("removeDay(2);");
+printList("list",list);
+
+switchindex(0,1);
+console.log("switchindex(0,1);");
+printList("list",list);
+
+switchindex(2,4);
+console.log("switchindex(2,4);");
+printList("list",list);
+
+switchindex(list.length-2, list.length-1);
+console.log("switchindex(list.length-2, list.length-1);");
 printList("list",list);
 
 //Ignore Day
@@ -107,6 +119,71 @@ printList("dayIgnoreList",dayIgnoreList)
         dayList.forEach(element => {
             list.push(element);
         });
+    }
+
+    function switchindex(i1, i2){
+        var hold1 = [];
+        var hold2 = [];
+        var hold3 = [];
+        
+        var holdi1 = list[i1];
+        var holdi2 = list[i2];
+            
+        temp1 = i1;
+        temp2 = i2;
+        
+        if (i1>i2) {
+            temp1 = i2;
+            temp2 = i1;
+        }
+        
+
+        for (let i = 0; i < temp1; i++) {
+            hold1.push(list[i]);
+        }
+
+        for (let i = temp1 + 1; i < temp2; i++) {
+            hold2.push(list[i]);
+        }
+
+        for (let i = temp2+1; i < list.length; i++) {
+            hold3.push(list[i]);
+        }
+
+        
+        holdi1 = list[i1];
+        holdi2 = list[i2];
+        
+        
+        if (i2>i1) {
+            hold2.forEach(element => {
+            hold1.push(element);
+            });
+
+            hold1.push(holdi1);
+            hold1.push(holdi2);
+
+            hold3.forEach(element => {
+                hold1.push(element);
+            });
+        }
+
+        if (i1>i2) {
+            hold1.push(holdi2);
+            hold1.push(holdi1);
+            
+            hold2.forEach(element => {
+            hold1.push(element);
+            });
+    
+            hold3.forEach(element => {
+            hold1.push(element);
+            });
+        }
+
+        if (i2!=i1) {
+            list = hold1;
+        }
     }
 
 //Med stats Functions
