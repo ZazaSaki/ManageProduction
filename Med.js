@@ -6,6 +6,7 @@ printList("list",list);
 printList("tempList",tempList);
 printList("dayIgnoreList",dayIgnoreList);
 
+/*
 //add
 addDay(9);
 console.log("addDay(9);");
@@ -24,19 +25,32 @@ printList("list",list);
 removeDay(2);
 console.log("removeDay(2);");
 printList("list",list);
-
+//***/ 
 switchindex(0,1);
 console.log("switchindex(0,1);");
+printList("list",list);
+
+switchindex(1,0);
+console.log("switchindex(1,0);");
 printList("list",list);
 
 switchindex(2,4);
 console.log("switchindex(2,4);");
 printList("list",list);
 
+switchindex(4,2);
+console.log("switchindex(4,2);");
+printList("list",list);
+
 switchindex(list.length-2, list.length-1);
 console.log("switchindex(list.length-2, list.length-1);");
 printList("list",list);
 
+switchindex(list.length-1, list.length-2);
+console.log("switchindex(list.length-1, list.length-2);");
+printList("list",list);
+
+/*
 //Ignore Day
 addDayIgnore(1);
 console.log("addDayIgnore(1);");
@@ -68,7 +82,7 @@ console.log("resetDayIgnore();");
 printList("templist",tempList);
 printList("list    ",list);
 printList("dayIgnoreList",dayIgnoreList)
-
+*/
 
 
 //Day ignore functions
@@ -141,48 +155,31 @@ printList("dayIgnoreList",dayIgnoreList)
         for (let i = 0; i < temp1; i++) {
             hold1.push(list[i]);
         }
+        
+        if (i1>i2) {
+            hold1.push(holdi1);
+            hold1.push(holdi2);
+        }
 
         for (let i = temp1 + 1; i < temp2; i++) {
-            hold2.push(list[i]);
+            hold1.push(list[i]);
+        }
+
+        
+
+        if (i2>i1) {
+            hold1.push(holdi2);
+            hold1.push(holdi1);
         }
 
         for (let i = temp2+1; i < list.length; i++) {
-            hold3.push(list[i]);
+            hold1.push(list[i]);
         }
 
         
-        holdi1 = list[i1];
-        holdi2 = list[i2];
-        
-        
-        if (i2>i1) {
-            hold2.forEach(element => {
-            hold1.push(element);
-            });
-
-            hold1.push(holdi1);
-            hold1.push(holdi2);
-
-            hold3.forEach(element => {
-                hold1.push(element);
-            });
-        }
-
-        if (i1>i2) {
-            hold1.push(holdi2);
-            hold1.push(holdi1);
-            
-            hold2.forEach(element => {
-            hold1.push(element);
-            });
-    
-            hold3.forEach(element => {
-            hold1.push(element);
-            });
-        }
 
         if (i2!=i1) {
-            list = hold1;
+            list = hold1.slice();
         }
     }
 
