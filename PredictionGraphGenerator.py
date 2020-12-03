@@ -61,24 +61,32 @@ def drawLogGraph(XVals,a,b):
     plt.plot(xs, ys, '-gD')
 
 #"""
-#Setting y values
-YVals = np.array([3950, 3990, 3999])
 
-#Logarithmic Regression
-XVals,a,b = logRegressionFromList(YVals)
 
-#Drawing Graph
-drawLogGraph(XVals,a,b)
+def main():
+    #Setting y values
+    YVals = np.array([3950, 3990, 3999])
 
-#Drawing Real Points
-DrawVals(YVals)
+    #Logarithmic Regression
+    XVals,a,b = logRegressionFromList(YVals)
 
-#Draw Error
-DrawPrediction(XVals,YVals)
+    #Drawing Graph
+    drawLogGraph(XVals,a,b)
 
-#Saving Results graph
-plt.grid()
-plt.savefig('graph.png')
+    #Drawing Real Points
+    DrawVals(YVals)
+
+    #Draw Error
+    DrawPrediction(XVals,YVals)
+
+    #Saving Results graph
+    plt.grid()
+    plt.savefig('graph.png')
+    plt.show()
+    pass     
+
+if __name__ == "__main__":
+    main()
 
 
 
