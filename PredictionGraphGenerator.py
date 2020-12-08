@@ -13,7 +13,7 @@ def DrawVals(Y):
         c = c + 1
     pass
 
-def getXValsFormYVals(yVals):
+def getXValsFormYVals(YVals):
     #Setting y values
     xArray = []
 
@@ -37,7 +37,7 @@ def PredictError(a,b, realList):
 
     return med/count
 
-def DrawPrediction(XVals, YVals):
+def DrawPrediction(XVals, YVals, a, b):
     #Calculate Error 
     ErrorMed = PredictError(a,b,YVals)
     #Printing Error
@@ -45,6 +45,8 @@ def DrawPrediction(XVals, YVals):
 
     print("random stuff")
     print(str(ErrorMed) + "tested")
+
+    return (XVals.size + 4, LogImage(a,b, XVals.size + 4) * (1.0-abs(ErrorMed)))
 
 def logRegressionFromList(YVals):
     XVals = getXValsFormYVals(YVals)
@@ -63,9 +65,9 @@ def drawLogGraph(XVals,a,b):
 #"""
 
 
-def main():
+def LogRegressionGraph(List):
     #Setting y values
-    YVals = np.array([3950, 3990, 3999])
+    YVals = np.array(List)
 
     #Logarithmic Regression
     XVals,a,b = logRegressionFromList(YVals)
@@ -77,16 +79,21 @@ def main():
     DrawVals(YVals)
 
     #Draw Error
-    DrawPrediction(XVals,YVals)
+    Day, Predict = DrawPrediction(XVals,YVals, a, b)
 
     #Saving Results graph
     plt.grid()
-    plt.savefig('graph.png')
+    plt.savefig('graphPredict.png')
     plt.show()
-    pass     
+    
+    return(Day, Predict)    
 
-if __name__ == "__main__":
-    main()
+def DrawGraph(List):
+    YVals = np.array(List)
+    DrawVals(YVals)
+    plt.savefig('graphVals.png')
+    plt.show()
+    pass
 
 
 
