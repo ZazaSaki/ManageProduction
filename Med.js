@@ -134,3 +134,21 @@ var dayIgnoreList = [];
         prt+="]"
         console.log(prt);
     }
+
+//Save to File
+    function listToText(list){
+        var wrt = "";
+
+        for (let index = 0; index < list.length; index++) {
+            
+            var element = list[index];
+            wrt+=element;
+            
+            if (index < list.length-1) {
+                wrt += ",";
+            }
+
+        }
+
+        return wrt;
+    }
