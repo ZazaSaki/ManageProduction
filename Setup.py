@@ -11,7 +11,6 @@ def extractRequest(path):
 
     return(comand, args)
 
-
 def extractArray(string):
     Array =[]
     for target_list in string.split(","):
@@ -30,7 +29,7 @@ def ActionSetup(path):
     comand, args = extractRequest(path);
 
     if comand == "logGraph":
-        gmath.LogRegressionGraph(extractArray(args[0]))
+        Day, Predict = gmath.LogRegressionGraph(extractArray(args[0]))
 
     if comand == "drawGraph":
         gmath.DrawGraph(extractArray(args[0]));
