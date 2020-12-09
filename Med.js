@@ -1,16 +1,16 @@
-var list = [6, 7, 3, 2, 8, 10, 9, 8, 9, 8,10];
-var tempList = [];
-var dayIgnoreList = [];
+export var list = [6, 7, 3, 2, 8, 10, 9, 8, 9, 8,10];
+export var tempList = [];
+export var dayIgnoreList = [];
 
 
-//Day ignore functions
-    function addDayIgnore(index){
+//Day ignore export functions
+    export function addDayIgnore(index){
         dayIgnoreList.push(index);
 
         tempList = NonIgnoredDays();
     }
 
-    function RemoveDayIgnore(index){
+    export function RemoveDayIgnore(index){
         for (let i = 0; i < dayIgnoreList.length; i++) {
             var element = dayIgnoreList[i];
             
@@ -24,7 +24,7 @@ var dayIgnoreList = [];
     
     }
 
-    function NonIgnoredDays(){
+    export function NonIgnoredDays(){
         var outList = list.slice();
         dayIgnoreList.forEach(element => {
             outList.splice(element,1);
@@ -33,27 +33,31 @@ var dayIgnoreList = [];
         return outList;
     }
 
-    function resetDayIgnore(){
+    export function resetDayIgnore(){
         dayIgnoreList = [];
         tempList = NonIgnoredDays();
     }
 
+    export function nDays(){
+        return list.length;
+    }
+
 //Add or Remove Days
-    function addDay(dayval){
+    export function addDay(dayval){
         list.push(dayval);
     }
 
-    function removeDay(index){
+    export function removeDay(index){
         list.splice(index,1);
     }
 
-    function addDayList(dayList){
+    export function addDayList(dayList){
         dayList.forEach(element => {
             list.push(element);
         });
     }
 
-    function switchindex(i1, i2){
+    export function switchindex(i1, i2){
         var hold1 = [];
         var hold2 = [];
         var hold3 = [];
@@ -101,8 +105,8 @@ var dayIgnoreList = [];
         }
     }
 
-//Med stats Functions
-    function GeneralMed(){ 
+//Med stats export functions
+    export function GeneralMed(){ 
         var c = 0.0;
         var med = 0.0;
         tempList.forEach(element => {
@@ -113,7 +117,7 @@ var dayIgnoreList = [];
         return med/c;
     }
 
-    function LastDayMed(days){
+    export function LastDayMed(days){
         var med = 0.0;
         var c = 0.0;
 
@@ -126,7 +130,7 @@ var dayIgnoreList = [];
     }
 
 //Controll vars
-    function printList(name, arr){
+    export function printList(name, arr){
         var prt = name + ": [";
         arr.forEach(element => {
             prt += " " + element +","; 
@@ -136,7 +140,7 @@ var dayIgnoreList = [];
     }
 
 //Save to File
-    function listToText(list){
+    export export function listToText(list){
         var wrt = "";
 
         for (let index = 0; index < list.length; index++) {
@@ -152,3 +156,4 @@ var dayIgnoreList = [];
 
         return wrt;
     }
+
