@@ -1,7 +1,23 @@
 
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+export var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-const url='https://jsonplaceholder.typicode.com/posts';
-var xmlHttp = new XMLHttpRequest();
-xmlHttp.open( "GET", url, false ); // false for synchronous request
-xmlHttp.send( null );
+export const url='http://localhost:8888/';
+export var xmlHttp = new XMLHttpRequest();
+
+export function saveVals(List) {
+    comand = "save?" + List;
+    xmlHttp.open( "GET", url + comand, false ); // false for synchronous request
+    xmlHttp.send( null );
+}
+
+export function DrawLogGraph(List) {
+    comand = "logGraph?" + List;
+    xmlHttp.open( "GET", url + comand, false ); // false for synchronous request
+    xmlHttp.send( null );
+}
+
+export function DrawGraph(List) {
+    comand = "drawGraph?" + List;
+    xmlHttp.open( "GET", url + comand, false ); // false for synchronous request
+    xmlHttp.send( null );
+}
