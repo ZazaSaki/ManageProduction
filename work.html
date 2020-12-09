@@ -10,30 +10,23 @@
 	</head>
 	<body>
 	<!--Begin List-->
+	
 		<div class="list">
-			<ul>
-				<li>Qualquer coisa</li>
-				<li>Qualquer Coisa</li>
-				<li>Qualquer coisa</li>
-				<li>Qualquer coisa</li>
-				<li>Qualquer Coisa</li>
-				<li>Qualquer coisa</li>
-				<li>Qualquer coisa</li>
-				<li>Qualquer Coisa</li>
-				<li>Qualquer coisa</li>
-				<li>Qualquer coisa</li>
-				<li>Qualquer coisa</li>
-				<li>Qualquer Coisa</li>
-				<li>Qualquer coisa</li>
-			</ul>
-		</div>
-		<br>
+		
+		<ul id="dynamic-list"></ul>
+		<input type="text" id="candidate"/>
+		<button onclick="addItem()">add item</button>
+		<button onclick="removeItem()">remove item</button>
+		
+	  </div>
+	  <br>
+		
 	<!--End List-->
 	
 	<!--Begin date-->
 	<div class="date">
 	<h4>Dia</h4>
-	<p><input id="number" type="number" value="1" max="31" min="1">
+	<p><input id="number" type="number" value="1" max="99999" min="1">
 	</p>
 	<h4>Produção</h4>
 	<p><input id="number" type="number" value="0" max="999999" min="0" ></p>
