@@ -12,26 +12,18 @@
 	<!--Begin List-->
 	
 		<div class="list">
-		
-		<ul id="dynamic-list"></ul>
-		<input type="text" id="candidate"/>
-		<button onclick="addItem()">add item</button>
-		<button onclick="removeItem()">remove item</button>
-		
-	  </div>
+		<div class="date">
+		<h4>Dia</h4>
+	    <p><input id="number" type="number" value="1" max="99999" min="1"></p>
+	    <button onclick="addDay()">Adicionar Dia</button>
+	    </div>
+		<h4>Lista</h4>
+		<ol class="align" id="day"></ol>
+		<button onclick="removeDay()">Remove Day</button>
+		</div>
 	  <br>
 		
 	<!--End List-->
-	
-	<!--Begin date-->
-	<div class="date">
-	<h4>Dia</h4>
-	<p><input id="number" type="number" value="1" max="99999" min="1">
-	</p>
-	<h4>Produção</h4>
-	<p><input id="number" type="number" value="0" max="999999" min="0" ></p>
-	</div>
-	<!--End date-->
   <div class="stats"><h2>Stats</h2>
   <!--Insert Info.Stats-->
   </div>
@@ -55,19 +47,12 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
   <section class="container">
-  <table style="width:100%">
-  <tr>
-  <th>
-  <div class="dgraph"><h2><p>Daily</p>Graph</h2></div></th>
-  <th>
-   <br>
+  <div class="dgraph"><h2><p>Daily</p>Graph</h2></div>
   <div class="pgraph"><h2><p>Prediction</p>Graph</h2></div>
-  </th>
-  </tr>
-   <tr>
-    <td><!--Insert Daily graph--></td>
-    <td><!--Insert Prediction graph--></td>
-  </table>
+    <div class="imagem1">
+    <img src="imagens/graph.png" alt="Graph" width="500px" height="400px">
+	<div class="imagem2">
+    <img src="imagens/graphVals.png" alt="Graph" width="500px" height="400px">
 	</section>
   </div>
 </div>
