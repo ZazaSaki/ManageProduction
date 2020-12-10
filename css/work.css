@@ -57,10 +57,6 @@ hr{
   transition: 0.3s;
 }
   
-.overlay a:hover, .overlay a:focus {
-  color: #191970;
-}
-
 span{
 right:50;
 top:20;
@@ -132,4 +128,4 @@ max-width:300px;
 .imagem2{
 	margin:-405px 0px 200px 700px;
 
-}	
+}
