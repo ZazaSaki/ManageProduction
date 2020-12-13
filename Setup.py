@@ -4,6 +4,7 @@ import PredictionGraphGenerator as gmath
 def extractRequest(path):
     request = path.split("/",1)[1].split("?",1)
     comand = request[0]
+    print(request[1].split(";"))
     args = request[1].split(";")
 
     print("comand : " + comand)
@@ -26,7 +27,12 @@ def saveFile(list):
 
 
 def ActionSetup(path):
-    comand, args = extractRequest(path);
+    comand, args = "", []
+    try:
+        comand, args = extractRequest(path)
+        
+    except:
+        print(comand + " ::: ")
 
     if comand == "logGraph":
         Day, Predict = gmath.LogRegressionGraph(extractArray(args[0]))
