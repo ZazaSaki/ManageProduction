@@ -3,6 +3,19 @@ var tempList = [];
 var dayIgnoreList = [];
 
 
+//Iniciate vars
+    function setList(outval){
+        list = outval;
+        console.log("this interlist");
+        console.log(list);
+        resetDayIgnore();
+    }
+
+    function getList(){
+        return list;
+    }
+
+
 //Day ignore functions
     function addDayIgnore(index){
         dayIgnoreList.push(index);
@@ -161,4 +174,4 @@ var dayIgnoreList = [];
         return wrt;
     }
 
-module.exports = {list, addDay, addDayIgnore, addDayList, GeneralMed, LastDayMed, listToText, nDays, NonIgnoredDays, printList, removeDay, RemoveDayIgnore, resetDayIgnore, switchindex};
+module.exports = {getList,setList, addDay, addDayIgnore, addDayList, GeneralMed, LastDayMed, listToText, nDays, NonIgnoredDays, printList, removeDay, RemoveDayIgnore, resetDayIgnore, switchindex};

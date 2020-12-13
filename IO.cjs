@@ -4,25 +4,23 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const url='http://localhost:8080/';
 var xmlHttp = new XMLHttpRequest();
 
-function saveVals() {
-    comand = "save?" + Med.list;
+function saveVals(args) {
+    comand = "save?" + args;
     xmlHttp.open( "GET", url + comand, false ); // false for synchronous request
     xmlHttp.send( null );
 }
 
-function DrawLogGraph() {
-    comand = "logGraph?" + Med.list;
+function DrawLogGraph(args) {
+    comand = "logGraph?" + args;
     xmlHttp.open( "GET", url + comand, false ); // false for synchronous request
     xmlHttp.send( null );
 }
 
-function DrawGraph() {
-    comand = "drawGraph?" + Med.list;
+function DrawGraph(args) {
+    comand = "drawGraph?" + args;
     xmlHttp.open( "GET", url + comand, false ); // false for synchronous request
     xmlHttp.send( null );
 }
-console.log("breathing");
-saveVals();
-DrawGraph();
-DrawLogGraph();
+
+module.exports = {saveVals, DrawGraph, DrawLogGraph}
 
