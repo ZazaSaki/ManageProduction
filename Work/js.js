@@ -34,7 +34,7 @@ function addItem(){
 	 
 	}
 
-function updateListId(params) {
+function updateListId() {
 	var ul = document.getElementById("dynamic-list");
 	listId = parseInt(ul.lastElementChild.id);
 }
@@ -65,8 +65,31 @@ function sort() {
 	return Elist;
 }
 
+function ExistDay(d) {
+	temp = document.getElementById("dynamic-list").firstElementChild;
+
+	if (temp == null) {
+		return false;
+	}
+
+	if (parseInt(temp.id) == d) {
+		return true;
+	}
+	
+	while (temp.nextElementSibling != null) {
+		temp = temp.nextElementSibling;
+		if (parseInt(temp.id) == d) {
+			return true;
+		}
+	};
+
+	return false;
+}
+
 function createItem(value, thisId) {
-	if (value+"" == "") {
+	//validating vars
+	
+	if (value+"" == "" || ExistDay(thisId)) {
 		return;
 	}
 	
