@@ -1,4 +1,5 @@
 var debuger = 0;
+var listId = 0;
 //Abre o Menu
   function openNav() {
 	loadgraph();
@@ -12,19 +13,98 @@ function closeNav() {
 
 function addItem(){
 	 var ul = document.getElementById("dynamic-list");
-	 var candidate = document.getElementById("candidate");
-	 var li = document.createElement("li");
-	 li.setAttribute('id',candidate.value);
-	 li.appendChild(document.createTextNode(candidate.value));
-	 ul.appendChild(li);
+	 
+	 var Production = document.getElementById("Production");
+	 var Day = document.getElementById("Day");
+
+	 
+	 if ((parseInt(Day.value) + "")== "NaN"){
+		listId++;
+	 }else {
+		ul.appendChild(createItem(Production.value, Day.value));
+		updateListId();
+		console.log(listId);
+
+		sort();
+		return;
+	 }
+	
+	 ul.appendChild(createItem(Production.value, listId));
+	 sort();
+	 
+	}
+
+function updateListId(params) {
+	var ul = document.getElementById("dynamic-list");
+	listId = parseInt(ul.lastElementChild.id);
+}
+
+function sort() {
+	var Elist = []
+	
+	ul = document.getElementById("dynamic-list");
+	temp = document.getElementById("dynamic-list").firstElementChild;
+	
+	
+	Elist.push(temp);
+	while (temp.nextElementSibling != null) {
+		temp = temp.nextElementSibling;
+		Elist.push(temp);
+		console.log(temp.id);
+	};
+
+	
+	Elist.sort((a,b)=>{return parseInt(a.id) - parseInt(b.id)})
+
+	ul.firstElementChild.remove();
+
+	Elist.forEach(element => {
+		ul.appendChild(element)
+	});
+
+	return Elist;
+}
+
+function createItem(value, thisId) {
+	if (value+"" == "") {
+		return;
 	}
 	
-	function removeItem(){
-		var ul = document.getElementById("dynamic-list");
-		var candidate = document.getElementById("candidate");
-		var item = document.getElementById(candidate.value);
-		ul.removeChild(item);
-	}
+	//create item
+	var li = document.createElement("li");
+	li.setAttribute('id',value);
+	li.appendChild(document.createTextNode("Dia " + thisId + " : " + value));
+	li.id = thisId;
+	
+	//create ignore button
+	var IgnoreBt = createButton("ignore", thisId, null);
+
+	//adding button
+	li.appendChild(IgnoreBt);
+
+	//create delete button
+	var DeleteBt = createButton("delete", thisId, function(){li.remove()});
+
+	//adding button
+	li.appendChild(DeleteBt);
+	
+	return li;
+}
+
+function createButton(name, parentId, event){
+	var Button = document.createElement("button");
+	Button.id = name + "_" + parentId;
+	Button.appendChild(document.createTextNode(name));
+	Button.onclick = event;
+
+	return Button;
+}
+
+
+
+function removeItem(id){
+	var rm = document.getElementById(id).remove();
+}
 
 function loadgraph(){
 	replaceImage("predict", "graphPredict.png");
