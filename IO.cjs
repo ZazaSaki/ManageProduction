@@ -1,4 +1,3 @@
-var Med = require("./Med.cjs");
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 const url='http://localhost:8080/';

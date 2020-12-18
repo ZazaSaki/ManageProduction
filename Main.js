@@ -1,5 +1,5 @@
-var Med = require("./Med.cjs");
-var IO = require("./IO.cjs");
+const Med = require("./Med.cjs");
+const IO = require("./IO.cjs");
 
 var localList = [32, 37, 41, 44, 46];
 
