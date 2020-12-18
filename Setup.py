@@ -28,9 +28,12 @@ def saveFile(list):
 
 def ActionSetup(path):
     comand, args = "", []
+    release = False
+    filePath = ""
+    
     try:
         comand, args = extractRequest(path)
-        
+        print(comand)
     except:
         print(comand + " ::: ")
 
@@ -45,5 +48,10 @@ def ActionSetup(path):
         saveFile(args[0])
         pass
 
-    pass
+    if comand == "get":
+        release = True
+        filePath = args[0].split(":")[0]
+        pass
+
+    return release, filePath
 
