@@ -91,10 +91,12 @@ function sort() {
 function ExistDay(d) {
 	temp = document.getElementById("dynamic-list").firstElementChild;
 
+	//checking if list is empty
 	if (temp == null) {
 		return false;
 	}
 
+	//checkin if there is a repeated id(day)
 	if (parseInt(temp.id) == d) {
 		return true;
 	}
