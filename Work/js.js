@@ -13,12 +13,15 @@ function closeNav() {
 }
 
 function addItem(){
+	//getting list
 	var ul = document.getElementById("dynamic-list");
-	 
+	
+	//getting vals
 	var Production = document.getElementById("Production");
 	var Day = document.getElementById("Day");
 
-	 
+	
+	//checking DayVal == null
 	if ((parseInt(Day.value) + "")== "NaN"){
 		listId++;
 		ul.appendChild(createItem(Production.value, listId));
@@ -29,24 +32,33 @@ function addItem(){
 	}
 
 	
-
+	//sorting List
 	sort();
-	console.log(listId);
 	 
 }
 
+
+//updating the value of last day inserted
 function updateListId() {
 	var ul = document.getElementById("dynamic-list");
 	listId = parseInt(ul.lastElementChild.id);
 }
 
+//Sort intern list
+function sortInternList(){
+	sendVals.sort((a,b)=>{return parseInt(a.id) - parseInt(b.id)});
+}
+
+
+//Sort html an js lists
 function sort() {
 	var Elist = []
 	
+	//getting list a the first element
 	ul = document.getElementById("dynamic-list");
 	temp = document.getElementById("dynamic-list").firstElementChild;
 	
-	
+	//Feeding the array with list's elements
 	Elist.push(temp);
 	while (temp.nextElementSibling != null) {
 		temp = temp.nextElementSibling;
@@ -55,22 +67,27 @@ function sort() {
 	};
 
 	
+	//sorting values by day
 	Elist.sort((a,b)=>{return parseInt(a.id) - parseInt(b.id)});
 	
-
+	//cleanning list
 	ul.firstElementChild.remove();
 	
+	//refilling list with sorted elements
 	Elist.forEach(element => {
 		ul.appendChild(element);
 	});
 
-	sendVals.sort((a,b)=>{return parseInt(a.id) - parseInt(b.id)});
+	//sort intern list
+	sortInternList();
 
+	//updating last day in list
 	updateListId();
 
 	console.log(sendVals);
 }
 
+//verify if day d already exists in list
 function ExistDay(d) {
 	temp = document.getElementById("dynamic-list").firstElementChild;
 
@@ -92,13 +109,14 @@ function ExistDay(d) {
 	return false;
 }
 
+//create list item 
 function createItem(value, thisId) {
 	//validating vars
-	
 	if (value+"" == "" || ExistDay(thisId)) {
 		return;
 	}
 	
+	//adding to intern list
 	sendVals.push({"id" : parseInt(thisId), "value" : parseFloat(value)});
 
 	//create item
@@ -132,10 +150,8 @@ function createButton(name, parentId, event){
 }
 
 
-
+//remove items from intern list
 function removeItem(id){
-	
-
 	rmIndex = sendVals.findIndex((a) => {return a.id == parseInt(id)});
 	sendVals.splice(rmIndex,1);
 
@@ -144,19 +160,21 @@ function removeItem(id){
 	updateListId();
 }
 
+//update graphs
 function loadgraph(){
 	replaceImage("predict", "graphPredict.png");
 	replaceImage("vals", "graphVals.png")
 	console.log("reloaded");
 }
 
+//remove graphs 
 function remove(){
 	document.getElementById("predict").lastElementChild.remove();
 	document.getElementById("vals").lastElementChild.remove();
 	console.log("remove");
 }
 
-
+//update a single image by id
 function replaceImage(htmlId, name) { 
 	console.log(htmlId);
 	var img = document.createElement('img');
