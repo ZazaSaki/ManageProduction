@@ -1,5 +1,6 @@
 var debuger = 0;
 var listId = 0;
+var sendVals = [];
 //Abre o Menu
   function openNav() {
 	loadgraph();
@@ -21,10 +22,14 @@ function addItem(){
 	if ((parseInt(Day.value) + "")== "NaN"){
 		listId++;
 		ul.appendChild(createItem(Production.value, listId));
+		
 	}else {
 		ul.appendChild(createItem(Production.value, Day.value));
 		
 	}
+
+	
+
 	sort();
 	console.log(listId);
 	 
@@ -50,15 +55,20 @@ function sort() {
 	};
 
 	
-	Elist.sort((a,b)=>{return parseInt(a.id) - parseInt(b.id)})
+	Elist.sort((a,b)=>{return parseInt(a.id) - parseInt(b.id)});
+	
 
 	ul.firstElementChild.remove();
-
+	
 	Elist.forEach(element => {
-		ul.appendChild(element)
+		ul.appendChild(element);
 	});
 
+	sendVals.sort((a,b)=>{return parseInt(a.id) - parseInt(b.id)});
+
 	updateListId();
+
+	console.log(sendVals);
 }
 
 function ExistDay(d) {
@@ -89,6 +99,8 @@ function createItem(value, thisId) {
 		return;
 	}
 	
+	sendVals.push({"id" : parseInt(thisId), "value" : parseFloat(value)});
+
 	//create item
 	var li = document.createElement("li");
 	li.setAttribute('id',value);
