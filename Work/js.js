@@ -12,27 +12,23 @@ function closeNav() {
 }
 
 function addItem(){
-	 var ul = document.getElementById("dynamic-list");
+	var ul = document.getElementById("dynamic-list");
 	 
-	 var Production = document.getElementById("Production");
-	 var Day = document.getElementById("Day");
+	var Production = document.getElementById("Production");
+	var Day = document.getElementById("Day");
 
 	 
-	 if ((parseInt(Day.value) + "")== "NaN"){
+	if ((parseInt(Day.value) + "")== "NaN"){
 		listId++;
-	 }else {
+		ul.appendChild(createItem(Production.value, listId));
+	}else {
 		ul.appendChild(createItem(Production.value, Day.value));
-		updateListId();
-		console.log(listId);
-
-		sort();
-		return;
-	 }
-	
-	 ul.appendChild(createItem(Production.value, listId));
-	 sort();
-	 
+		
 	}
+	sort();
+	console.log(listId);
+	 
+}
 
 function updateListId() {
 	var ul = document.getElementById("dynamic-list");
@@ -62,7 +58,7 @@ function sort() {
 		ul.appendChild(element)
 	});
 
-	return Elist;
+	updateListId();
 }
 
 function ExistDay(d) {
@@ -106,7 +102,7 @@ function createItem(value, thisId) {
 	li.appendChild(IgnoreBt);
 
 	//create delete button
-	var DeleteBt = createButton("delete", thisId, function(){li.remove()});
+	var DeleteBt = createButton("delete", thisId, function(){li.remove(); removeItem(li.id);});
 
 	//adding button
 	li.appendChild(DeleteBt);
@@ -126,7 +122,7 @@ function createButton(name, parentId, event){
 
 
 function removeItem(id){
-	var rm = document.getElementById(id).remove();
+	updateListId();
 }
 
 function loadgraph(){
