@@ -11,12 +11,14 @@
 	<body>
 	<!--Begin List-->
 	
-		<div class="list">
+		<div class="list"  aria-orientation="vertical">
+		
+		<div aria-orientation="horizontal">
+			<input type="number" id="Day"/>
+			<input type="number" id = "Production"/>
+			<button onclick="addItem()">add item</button>
+		</div>
 		<ul id="dynamic-list"></ul>
-		<input type="number" id="Day"/>
-		<input type="number" id = "Production"/>
-		<button onclick="addItem()">add item</button>
-		<button onclick="removeItem()">remove item</button>
 		
 	  </div>
 	  <br>
