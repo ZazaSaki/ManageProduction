@@ -134,6 +134,13 @@ function createButton(name, parentId, event){
 
 
 function removeItem(id){
+	
+
+	rmIndex = sendVals.findIndex((a) => {return a.id == parseInt(id)});
+	sendVals.splice(rmIndex,1);
+
+	console.log(sendVals);
+
 	updateListId();
 }
 
