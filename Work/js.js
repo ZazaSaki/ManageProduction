@@ -1,8 +1,9 @@
 var debuger = 0;
 var listId = 0;
 var sendVals = [];
+
 //Abre o Menu
-  function openNav() {
+function openNav() {
 	loadgraph();
   document.getElementById("myNav").style.width ="100%";
 }
@@ -111,6 +112,11 @@ function ExistDay(d) {
 	return false;
 }
 
+function addToInternList(thisId, value){
+	//adding to intern list
+	sendVals.push({"id" : parseInt(thisId), "value" : parseFloat(value)});
+}
+
 //create list item 
 function createItem(value, thisId) {
 	//validating vars
@@ -118,8 +124,7 @@ function createItem(value, thisId) {
 		return;
 	}
 	
-	//adding to intern list
-	sendVals.push({"id" : parseInt(thisId), "value" : parseFloat(value)});
+	addToInternList(thisId,value);
 
 	//create item
 	var li = document.createElement("li");
@@ -162,6 +167,21 @@ function removeItem(id){
 	updateListId();
 }
 
+function getSendStringsArgs(){
+	var days = "";
+	var productions = "";
+
+	days = sendVals[0].id;
+	productions = sendVals[0].value;
+
+	for (let i = 1; i < sendVals.length; i++) {
+		days = days + "," + sendVals[i].id;
+		productions = productions + "," + sendVals[i].value;
+	}
+	
+	return days, productions;
+}
+
 //update graphs
 function loadgraph(){
 	replaceImage("predict", "graphPredict.png");
@@ -177,12 +197,15 @@ function remove(){
 }
 
 //update a single image by id
-function replaceImage(htmlId, name) { 
+function replaceImage(htmlId, comand) { 
 	console.log(htmlId);
+	
+	var days, productions = getSendStringsArgs();
+	
 	var img = document.createElement('img');
 	img.alt = "Graph";
 	img.width = 500;
-	img.src = ("http://localhost:8080/get?./Work/imagens/" + name + ":" + (debuger++));
+	img.src = ("http://localhost:8080/get?./Work/imagens/" + comand + ":" + (debuger++));
 	img.height = 400;
 	console.log(img.src + " this");
 	document.getElementById(htmlId).appendChild(img);
