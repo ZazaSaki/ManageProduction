@@ -184,8 +184,8 @@ function getSendStringsArgs(){
 
 //update graphs
 function loadgraph(){
-	replaceImage("predict", "graphPredict.png");
-	replaceImage("vals", "graphVals.png")
+	replaceImage("predict", "logGraph");
+	replaceImage("vals", "drawGraph")
 	console.log("reloaded");
 }
 
@@ -205,7 +205,12 @@ function replaceImage(htmlId, comand) {
 	var img = document.createElement('img');
 	img.alt = "Graph";
 	img.width = 500;
-	img.src = ("http://localhost:8080/get?./Work/imagens/" + comand + ":" + (debuger++));
+
+	img.src = ("http://localhost:8080/"+ comand + "?" + productions);
+	
+	// /drawGraph?32,37,41,44,46
+	// /logGraph?32,37,41,44,46
+
 	img.height = 400;
 	console.log(img.src + " this");
 	document.getElementById(htmlId).appendChild(img);
