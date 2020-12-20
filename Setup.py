@@ -38,10 +38,13 @@ def ActionSetup(path):
         print(comand + " ::: ")
 
     if comand == "logGraph":
-        Day, Predict = gmath.LogRegressionGraph(extractArray(args[0]))
+        Day, Predict, ImagePath = gmath.LogRegressionGraph(extractArray(args[0]))
+        release = True;
+        filePath = ImagePath;
 
     if comand == "drawGraph":
-        gmath.DrawGraph(extractArray(args[0]));
+        filePath = gmath.DrawGraph(extractArray(args[0]));
+        release = True;
         pass
     
     if comand == "save":
