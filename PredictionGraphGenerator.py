@@ -83,17 +83,24 @@ def LogRegressionGraph(List):
 
     #Saving Results graph
     plt.grid()
-    plt.savefig('graphPredict.png')
-    plt.show()
     
-    return(Day, Predict)    
+    Path = './' + 'graphPredict.png';
+    
+    plt.savefig(Path)
+
+    
+    
+    return(Day, Predict, Path)    
 
 def DrawGraph(List):
     YVals = np.array(List)
     DrawVals(YVals)
-    plt.savefig('graphVals.png')
-    plt.show()
-    pass
+    
+    Path = './' + 'graphVals.png';
+
+    plt.savefig(Path)
+
+    return Path
 
 
 
