@@ -1,10 +1,11 @@
 .list{
   position: absolute;
-  left: auto;
+  margin-left:10px;
   width:350px;
   border-width:5px;  
   border-style:outset;
   border-color:#191970;
+  
  
 } 
 .date{
@@ -97,7 +98,7 @@ max-width:300px;
 }
 
 .stats{
-  margin:-190px 0px 0px 800px;
+  margin:-20px 0px 0px 800px;
   padding: 10px;
   border: 4px solid #191970;
   border-style:outset;

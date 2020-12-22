@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="css/work.css" rel="stylesheet"/>
-	<script src="js.js"></script>
+	<script src="../work/js.js"></script>
 	<title>Working title</title>
 	</head>
 	<body>
@@ -14,26 +14,18 @@
 		<div class="list"  aria-orientation="vertical">
 		
 		<div aria-orientation="horizontal">
+			<h3>Dia:</h3>
 			<input type="number" id="Day"/>
+			<h3>Produção:</h3>
 			<input type="number" id = "Production"/>
 			<button onclick="addItem()">add item</button>
 		</div>
+		<h3>Lista:</h3>
 		<ul id="dynamic-list"></ul>
-		
 	  </div>
 	  <br>
 		
 	<!--End List-->
-	
-	<!--Begin date-->
-	<div class="date">
-	<h4>Dia</h4>
-	<p><input id="number" type="number" value="1" max="99999" min="1">
-	</p>
-	<h4>Produção</h4>
-	<p><input id="number" type="number" value="0" max="999999" min="0" ></p>
-	</div>
-	<!--End date-->
   <div class="stats"><h2>Stats</h2>
   <!--Insert Info.Stats-->
   </div>
